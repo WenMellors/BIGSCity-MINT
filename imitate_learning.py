@@ -118,12 +118,12 @@ policy_config['SeqMovingStateNet']['hidden_size'] = policy_config['hidden_size']
 logger = get_logger(name='imitate_learning_{}'.format(dataset_name))
 logger.info('read data')
 if dataset_name == 'BJ_Taxi':
-    # 目前不会实装海淀区
-    train_data = pd.read_csv(os.path.join(data_root, dataset_name, 'chaoyang_traj_input_train.csv'))
-    test_data = pd.read_csv(os.path.join(data_root, dataset_name, 'chaoyang_traj_input_test.csv'))
-elif dataset_name == 'Porto_Taxi':
-    train_data = pd.read_csv(os.path.join(data_root, dataset_name, 'porto_input_train.csv'))
-    test_data = pd.read_csv(os.path.join(data_root, dataset_name, 'porto_input_test.csv'))
+    if region_name == 'partA':
+        train_data = pd.read_csv(os.path.join(data_root, dataset_name, 'beijing_partA_input_train.csv'))
+        test_data = pd.read_csv(os.path.join(data_root, dataset_name, 'beijing_partA_input_test.csv'))
+    else:
+        train_data = pd.read_csv(os.path.join(data_root, dataset_name, 'beijing_partB_input_train.csv'))
+        test_data = pd.read_csv(os.path.join(data_root, dataset_name, 'beijing_partB_input_test.csv'))
 elif dataset_name == 'Xian':
     # dataset_name == 'Xian'
     if region_name == 'partA':
